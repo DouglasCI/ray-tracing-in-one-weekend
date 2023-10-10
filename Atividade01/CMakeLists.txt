@@ -1,27 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
+
 project(Atividade01)
 
 set(CMAKE_CXX_STANDARD 11)
-set(SOURCE_FILES main.cpp)
-add_executable(main ${SOURCE_FILES})
 
-# You can alter these according to your needs, e.g if you don't need to display images - set(YOU_NEED_X11 0)
-set(YOU_NEED_X11 1)
-set(YOU_NEED_PNG 1)
-
-if(${YOU_NEED_X11} EQUAL 1)
-    message(STATUS "Looking for X11...")
-    find_package(X11 REQUIRED)
-    include_directories(${X11_INCLUDE_DIR})
-    target_link_libraries(main ${X11_LIBRARIES})
-else()
-    target_compile_definitions(main PRIVATE cimg_display=0)
-endif()
-
-if(${YOU_NEED_PNG} EQUAL 1)
-    message(STATUS "Looking for libpng...")
-    find_package(PNG REQUIRED)
-    include_directories(${PNG_INCLUDE_DIR})
-    target_link_libraries (main ${PNG_LIBRARY})
-    target_compile_definitions(main PRIVATE cimg_use_png=1)
-endif()
+add_subdirectory(src)
