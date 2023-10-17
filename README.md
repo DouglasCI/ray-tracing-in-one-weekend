@@ -28,3 +28,14 @@ Aqui, foram feitas operações para **configurar o ambiente** que será utilizad
 > - ***Gradiente:*** feito de modo similar ao tutorial com adaptações ao uso da biblioteca **CImg**;
 > - ***Quadrado:*** a imagem é gerada a partir do tamanho do lado do quadrado e o tamanho da imagem apenas. 
 > - ***Círculo:*** ele é criado a partir da informação do tamanho de seu raio e usa uma fórmula matemática para reconhecer se um pixel pertence ao círculo ou não.
+
+## - **Atividade 02:**
+Nesta Atividade, foram implementadas classes para vetores e matrizes, além de operações referentes a eles. Também foi configurado um ambiente para testes unitários. Note que não há uma função *main* explícita neste projeto, uma vez que o código é executado pelo ambiente de testes.
+
+> ### ***Vetores e Matrizes***
+> - Dentro do diretório ***include*** estão os *headers* das classes com definições de funções *inline*. E no diretório ***src*** há os arquivos *.cpp* com a implementação das classes definidas nos *headers*. Os arquivos são relacionados por seus nomes, por exemplo, *vec2.hpp* é header de *vec2.cpp*.
+> - Existem classes para vetores com 2, 3 e 4 dimensões denominadas: vec2, vec3 e vec4, respectivamente. Assim como classes para matrizes 2x2, 3x3 e 4x4, chamadas de mat2, mat3 e mat4, respectivamente.
+> - Encontra-se também código nesses arquivos para operações entre essas classes como multiplicação de matrizes e multiplicação entre matrizes e vetores. Mais detalhes estão presentes na documentação e no código em si.
+
+> ### ***Testes Unitários***
+> A biblioteca escolhida foi o **GoogleTest**. A integração desse ambiente com o projeto foi feita através do *CMakeLists.txt*. Todos os testes estão no diretório ***tests*** e há um arquivo de teste para cada classe feita, ou seja, *vec2_tests.cpp* é referente à classe vec2. Por fim, o projeto é compilado do mesmo modo de como foi descrito [nas instruções de compilação](#instruções-de-compilação), contudo, para executar os testes, deve-se utilizar o comando ***./run_tests*** sob o diretório *build*.
