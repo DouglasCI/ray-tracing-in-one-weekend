@@ -11,7 +11,7 @@
 >    ```
 > 3. Para executar o programa, use o comando abaixo, ajustando o caminho relativo do arquivo executável.
 >    ```
->    ./main
+>    ./src/main
 >    ```
 
 > ### ***Documentação***
