@@ -17,7 +17,7 @@
 > ### ***Documentação***
 > A documentação completa e detalhada do código está no arquivo ***Documentation.html*** dentro do diretório de sua respectiva atividade.
 
-## - **Atividade 01:**
+## - **Atividade 01 (I/O de Imagens)**
 Aqui, foram feitas operações para **configurar o ambiente** que será utilizado para toda a disciplina, assim como a implementação do código para a **geração de imagens**. O código pertinente a esta atividade está no arquivo ***Generator.h*** e as chamadas das funções está em ***main.cpp***.
 
 > ### ***Configurações*** 
@@ -29,7 +29,7 @@ Aqui, foram feitas operações para **configurar o ambiente** que será utilizad
 > - ***Quadrado:*** a imagem é gerada a partir do tamanho do lado do quadrado e o tamanho da imagem apenas. 
 > - ***Círculo:*** ele é criado a partir da informação do tamanho de seu raio e usa uma fórmula matemática para reconhecer se um pixel pertence ao círculo ou não.
 
-## - **Atividade 02:**
+## - **Atividade 02 (Operações Matriciais)**
 Nesta Atividade, foram implementadas classes para vetores e matrizes, além de operações referentes a eles. Também foi configurado um ambiente para testes unitários. Note que não há uma função *main* explícita neste projeto, uma vez que o código é executado pelo ambiente de testes.
 
 > ### ***Vetores e Matrizes***
@@ -39,3 +39,15 @@ Nesta Atividade, foram implementadas classes para vetores e matrizes, além de o
 
 > ### ***Testes Unitários***
 > A biblioteca escolhida foi o **GoogleTest**. A integração desse ambiente com o projeto foi feita através do *CMakeLists.txt*. Todos os testes estão no diretório ***tests*** e há um arquivo de teste para cada classe feita, ou seja, *vec2_tests.cpp* é referente à classe vec2. Por fim, o projeto é compilado do mesmo modo de como foi descrito [nas instruções de compilação](#instruções-de-compilação), contudo, para executar os testes, deve-se utilizar o comando ***./run_tests*** sob o diretório *build*.
+
+## - **Atividade 03 (I/O de Malhas)**
+Nesta Atividade, foi implementada a classe obj referente à leitura e ao armazenamento de malhas à partir de um arquivo em formato *.obj*. 
+
+> ### ***Malhas***
+> O *header* dessa classe está no diretório *include*, no arquivo *obj.hpp*, e a sua respectiva implementação está em *obj.cpp* dentro da pasta *src*. A classe obj tem apenas seu construtor, que recebe como parâmetro o nome do arquivo a ser armazenado, e alguns métodos auxiliares (usados na fase de teste) para a conversão dos dados armazenados de volta para *string*. Mais detalhes estão na documentação e no código em si.
+
+> ### ***Testes Unitários***
+> - Os testes seguem o mesmo padrão da [Atividade 02](#testes-unitários), porém há apenas um arquivo de teste *obj_tests.cpp*, onde são testadas as estrutura de dados (vértices geométricos, coordenadas de texturas, vértices normais e elementos de faces) utilizadas pela classe.
+> - Foram feitos testes através da criação de um objeto da classe obj com os arquivos *.obj* do diretório *tests/mock_inputs*, e a posterior comparação entre os dados que foram armazenados no objeto e o que estava na sua entrada. 
+> - Cada teste tem um nome e um arquivo de *mock_input* relacionado, por exemplo, *mock_inputs/v_test.obj* é atribuído ao teste *v_test* que é o teste para vértices geométricos. Mais detalhes estão na documentação e no código de teste em si.
+> - Todos os arquivos de *mock_inputs* foram gerados com base em um arquivo *.obj* real chamado *cat.obj*, baixado do site [free3d](https://free3d.com/). Ele está dentro do diretório *input*.
