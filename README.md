@@ -51,3 +51,23 @@ Nesta Atividade, foi implementada a classe obj referente à leitura e ao armazen
 > - Foram feitos testes através da criação de um objeto da classe obj com os arquivos *.obj* do diretório *tests/mock_inputs*, e a posterior comparação entre os dados que foram armazenados no objeto e o que estava na sua entrada. 
 > - Cada teste tem um nome e um arquivo de *mock_input* relacionado, por exemplo, *mock_inputs/v_test.obj* é atribuído ao teste *v_test* que é o teste para vértices geométricos. Mais detalhes estão na documentação e no código de teste em si.
 > - Todos os arquivos de *mock_inputs* foram gerados com base em um arquivo *.obj* real chamado *cat.obj*, baixado do site [free3d](https://free3d.com/). Ele está dentro do diretório *input*.
+
+## - **Atividade 04 (Visualização Inicial)**
+Nesta Atividade, foram implementadas a visualização de esferas, a de triângulos e a de objetos formados por faces triangulares. Algumas classes foram adicionadas, enquanto outras classes, como vec3, foram reutilizadas de atividades anteriores.
+
+> ### ***Esferas***
+> - Nessa seção, o [tutorial 1](https://raytracing.github.io/books/RayTracingInOneWeekend.html#rays,asimplecamera,andbackground) foi seguido para a criação da classe **ray** e a visualização de uma imagem de uma esfera. Para a organização do código, foi criada uma classe base **hittable** que é herdada pela classe **sphere**. Na classe **sphere**, temos a implementação da lógica por trás da checagem de que um ray está atravessando a esfera ou não. 
+> - Além disso, foi criada uma classe **renderer** que irá traçar os rays referentes a cada pixel e desenhar sua cor, considerando se o ray acerta ou não a esfera. Mais detalhes estão na documentação e no código em si.
+> - A organização dos arquivos segue assim como na atividade anterior, por exemplo, o *header* da classe renderer está no arquivo *renderer.hpp* no diretório *include* e o corpo do código está no arquivo *renderer.cpp* sob o diretório *src*. Contudo, algumas classes foram implementadas totalmente em seus *headers* por serem simples, o que pode ser visto na classe sphere que tem apenas seu *header* *sphere.hpp*.
+
+> ### ***Triângulos***
+> - Nessa parte, o [tutorial 2](https://raytracing.github.io/books/RayTracingTheNextWeek.html#quadrilaterals/ray-planeintersection) foi usado de inspiração para a criação da classe **triangle** que representa um triângulo no espaço tridimensional. A implementação do código e a distribuição dos arquivos segue o mesmo padrão utilizado para a classe sphere.
+
+> ### ***Renderer***
+> - A classe **renderer** é a responsável por renderizar as imagens e é chamada diretamente pela *main*. Ela possui métodos para cada tipo de imagem vista nesta atividade. Para mais detalhes, veja a documentação e o código.
+
+> ### ***Objetos***
+> - Por fim, 2 arquivos do formato *.obj* foram baixados da internet para servirem de teste na visualização de objetos reais. Um se chama [cat.obj](https://free3d.com/pt/3d-model/low-poly-cat-46138.html) e outro [icosahedron.obj](https://github.com/angerangel/LCR3D/blob/master/3D-models/icosahedron.obj) e estão no diretório *input*. Ambos possuem apenas faces triangulares, uma vez que não foi implementado suporte para quadriláteros. Foram escolhidos dois objetos para testes, pois um deles (icosahedron) é mais fácil de observar, e o outro (cat) possui geometria mais complexa e mais difícil de visualizar sem o uso de normais.
+
+> ### ***Execução do programa e saídas***
+> A compilação e execução do programa segue exatamente igual à [atividade 01](#instruções-de-compilação) e as saídas estão no diretório *images*, sendo que cada imagem é referente a um dos objetos feitos nesta atividade (veja o arquivo *main.cpp* para mais detalhes).
