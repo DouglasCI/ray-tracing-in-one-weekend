@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classhittable.html" title="Base class for hittable objects." alt="" coords="5,56,77,83"/>
+<area shape="rect" id="node2" href="$classhittable__list.html" title="Class for a list of hittable objects, can represent a world." alt="" coords="125,5,224,32"/>
+<area shape="rect" id="node3" href="$classsphere.html" title="Hittable derived class for a hittable sphere." alt="" coords="141,56,208,83"/>
+<area shape="rect" id="node4" href="$classtriangle.html" title="Hittable derived class for a hittable triangle." alt="" coords="139,107,211,133"/>
+</map>

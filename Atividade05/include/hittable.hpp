@@ -1,7 +1,7 @@
 #ifndef HITTABLE_H
 #define HITTABLE_H
 
-#include "commons.hpp"
+#include "ray.hpp"
 
 /// @brief Class for recording hits and deciding the surface side.
 class hit_record {
@@ -11,13 +11,22 @@ class hit_record {
     double t;
     bool front_face;
 
-    /// @brief Method for deciding and storing which side of the surface the ray is on.
+    /// @brief Method for deciding which side is the front face.
     /// @param r Ray.
     /// @param outward_normal Normal that points outwards the surface.
     void set_face_normal(const ray& r, const vec3& outward_normal) {
         // NOTE: the parameter `outward_normal` is assumed to have unit length.
         front_face = dot(r.direction(), outward_normal) < 0;
         normal = front_face ? outward_normal : -outward_normal;
+    }
+
+    /// @brief Method for deciding which side is the front face, but uses a different normal to decide the color.
+    /// @param r Ray.
+    /// @param outward_normal Normal tha points outwards the surface.
+    /// @param color_normal Normal that will decide the color.
+    void set_face_normal(const ray& r, const vec3& outward_normal, const vec3&color_normal) {
+        front_face = dot(r.direction(), outward_normal) < 0;
+        normal = front_face ? color_normal : -color_normal;
     }
 };
 

@@ -1,3 +1,7 @@
+/*!
+ * \file Header with common constants, methods and headers used by multiple other files.
+ */
+
 #ifndef COMMONS_H
 #define COMMONS_H
 
@@ -35,15 +39,12 @@ inline double random_double() {
 /// @param max Maximum value.
 /// @return Random real number.
 inline double random_double(double min, double max) {
-    // Returns a random real in [min, max).
     static std::uniform_real_distribution<double> distribution(min, max);
     static std::mt19937 generator;
     return distribution(generator);
 }
 
-// Common Headers
-#include "ray.hpp"
-#include "vec3.hpp"
+// Common headers
 #include "interval.hpp"
 
 #endif

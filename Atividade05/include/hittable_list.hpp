@@ -30,7 +30,7 @@ class hittable_list : public hittable {
             objects.push_back(object);
         }
 
-        /// @brief Decides if a ray hits any object from the world
+        /// @brief Decides if a ray hits any object from the world.
         /// @param r Ray.
         /// @param ray_t Valid ray interval.
         /// @param rec Hit record.

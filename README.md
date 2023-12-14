@@ -71,3 +71,29 @@ Nesta Atividade, foram implementadas a visualização de esferas, a de triângul
 
 > ### ***Execução do programa e saídas***
 > A compilação e execução do programa segue exatamente igual à [atividade 01](#instruções-de-compilação) e as saídas estão no diretório *images*, sendo que cada imagem é referente a um dos objetos feitos nesta atividade (veja o arquivo *main.cpp* para mais detalhes).
+
+## - **Atividade 05 (Materiais Difusos)**
+Nesta Atividade, foi implemetada a representação de normais na superfície dos objetos, o possibilidade de se ter múltiplos objetos em uma mesma cena, a refatoração do código da camera para uma classe separada com suporte para múltiplas cameras, a adição de antialiasing e de materiais difusos. Para a organização do código, também foi adicionado um arquivo chamado *include/commons.hpp* que possui definições de constantes, métodos, e *headers* comuns entre diversos arquivos.
+
+> ### ***Normais***
+> - Agora, os objetos possuem normais que controlam sua cor, permitindo superfícies suaves e com profundidade. O exemplo deixado no diretório *images* é de um icosaedro renderizado a partir do arquivo *input/icosahedron_with_normals.obj*, sua superfície suave fica difícil de enxegar por conta da adição do material difuso.
+> - Caso deseje renderizar novamente com cores mais destacadas, descomente a linha 134 do código em *include/camera.hpp*. Ou, troque o nome do arquivo na linha 15 do código em *src/main.cpp* para *../input/icosahedron.obj*, a fim de observar o icosaedro com faces planas (utilizar a normal da própria face triangular).
+> - Como a interpolação das cores das faces utiliza normais que são dos vértices (não da face), foi criada uma classe **vertex** que representa um vértice. Nela, há apenas as coordenadas do vértice e sua normal. 
+
+> ### ***Camera***
+> - O código referente à camera foi separado em uma classe chamada **camera** e agora é possível criar mais de uma camera para se ter diferentes pontos de vista de uma mesma cena. As imagens em *images/output_cam1.png* e *images/output_cam2.png* representam os pontos de vistas das duas cameras instanciadas em *src/main.cpp*. Diversos parâmetros foram adicionados à camera para suportar a customização de sua posição (**look_from**), em qual ponto ela olha (**look_at**), de qual é a direção do norte relativo à camera (**v_up**), e de seu campo de visão vertical (**vfov**). Existem outros parâmetros que serão discutidos posteriormente.
+
+> ### ***Antialiasing***
+> - Para a incorporação do antialiasing nesse código, foram acrescentados métodos auxiliares para a geração de números reais aleatórios, esses métodos estão em *include/commons.hpp*.
+> - Também foi incluída uma nova classe chamada **interval** que representa um intervalo e possui métodos pertinentes a esse intervalo, permitindo uma melhor organização do código.
+> - A ideia geral por trás da versão de antialiasing implementada é de pegar um feixe aleatório de raios ao redor do raio original, ao em vez de um único raio para cada pixel. Em seguida, é feita a média das cores desses raios para o pixel, o que deixa a transição de cor entre os pixels mais suave.
+> - Na classe **camera**, é possível controlar a quantidade de raios aleatórios utilizados no cálculo da média através do atributo **samples_per_pixel**. Um número maior estende o tempo de processamento exponencialmente, porém aumenta a suavidade das bordas dos objetos da imagem.
+
+> ### ***Materiais Difusos***
+> - Os raios refletidos de materiais difusos têm sua direção randomizada, com uma chance do raio ser absorvido pelo objeto.
+> - Para aliviar a recursividade de raios sendo refletidos em superfícies, foi adicionado um atributo **max_depth** na classe **camera** para limitar o número de reflexões que um raio pode ter. 
+> - Além disso, para uma representação mais realística de luz, as superfícies dos objetos seguem a Lei do Cosseno de Lambert. Ou seja, os raios aleatórios gerados pelas reflexões tendem a ser mais próximos da normal da superfície.
+> - Por fim, foi adicionada a correção de gamma na imagem para que o nível iluminação siga o espaço gamma 2, ao em vez do espaço linear. É possível modificar o nível de iluminação do objeto (refletância) através do atributo **gamma** na classe **camera**.
+
+> ### ***Execução do programa e saídas***
+> A compilação e a execução do programa seguem exatamente como na [atividade 01](#instruções-de-compilação), as imagens geradas estão no diretório *images* e os objetos de entrada estão no diretório *input*. Veja a documentação e o código fonte para mais detalhes sobre as implementações.

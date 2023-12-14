@@ -83,7 +83,7 @@ string obj::get_geometric_vertices_string() {
     for(vec3 v: v_vec) {
         string formatted_str = "v ";
         for(int n = 0; n < 3; n++) {
-            // Convert coordinates to string with 4 decimals precision
+            // Convert coordinates to string with 4 decimals precision.
             stringstream ss;
             ss << std::fixed << std::setprecision(4) << v[n];
             formatted_str.append(" " + ss.str());
@@ -98,7 +98,7 @@ string obj::get_texture_coord_string() {
     for(vec2 vt: vt_vec) {
         string formatted_str = "vt";
         for(int n = 0; n < 2; n++) {
-            // Convert coordinates to string with 4 decimals precision
+            // Convert coordinates to string with 4 decimals precision.
             stringstream ss;
             ss << std::fixed << std::setprecision(4) << vt[n];
             formatted_str.append(" " + ss.str());
@@ -114,7 +114,7 @@ string obj::get_vertex_normals_string() {
     for(vec3 vn: vn_vec) {
         string formatted_str = "vn";
         for(int n = 0; n < 3; n++) {
-            // Convert coordinates to string with 4 decimals precision
+            // Convert coordinates to string with 4 decimals precision.
             stringstream ss;
             ss << std::fixed << std::setprecision(4) << vn[n];
             formatted_str.append(" " + ss.str());
@@ -126,9 +126,9 @@ string obj::get_vertex_normals_string() {
 
 string obj::get_face_elements_string() {
     string str;
-    for(vector<array<int, 3>> face_vertices: f_vec) {
+    for(vector<array<int, 3>> face_vertices : f_vec) {
         string formatted_str = "f ";
-        for(array<int, 3> ind_list: face_vertices) {
+        for(array<int, 3> ind_list : face_vertices) {
             stringstream ss;
             ss << ind_list[0];
             // Optional indices
@@ -152,15 +152,38 @@ vector<triangle> obj::get_triangle_faces() {
     // For each face
     for(vector<array<int, 3>> face : f_vec) {
         // Get indices for geometric vertices of the triangular face
-        int index_A = (face[0])[0] - 1;
-        int index_B = (face[1])[0] - 1;
-        int index_C = (face[2])[0] - 1;
+        int ind_vA = (face[0])[0] - 1;
+        int ind_vB = (face[1])[0] - 1;
+        int ind_vC = (face[2])[0] - 1;
 
-        point3 A = unit_vector(v_vec[index_A]);
-        point3 B = unit_vector(v_vec[index_B]);
-        point3 C = unit_vector(v_vec[index_C]);
+        point3 A(v_vec[ind_vA]);
+        point3 B(v_vec[ind_vB]);
+        point3 C(v_vec[ind_vC]);
 
-        triangle_list.push_back(triangle(A, B, C));
+        vec3 u = B - A;
+        vec3 v = C - A;
+        vec3 triangle_normal = cross(u, v);
+
+        vertex vA(A), vB(B), vC(C);
+
+        // If the obj file doesn't specify vertex normals...
+        if(vn_vec.empty()) {
+            // all vertex normals are the triangle's face normal.
+            vA.normal = triangle_normal;
+            vB.normal = triangle_normal;
+            vC.normal = triangle_normal;
+        } else {
+            // Otherwise, add specified vertex normals.
+            int ind_vnA = (face[0])[2] - 1;
+            int ind_vnB = (face[1])[2] - 1;
+            int ind_vnC = (face[2])[2] - 1;
+            vA.normal = vn_vec[ind_vnA];
+            vB.normal = vn_vec[ind_vnB];
+            vC.normal = vn_vec[ind_vnC];
+        }
+
+        triangle t = triangle(vA, vB, vC, triangle_normal);
+        triangle_list.push_back(t);
     }
 
     return triangle_list;
@@ -179,7 +202,7 @@ array<int, 3> obj::parse_face_ind(string ind_list) {
 
     indices[0] = stoi(ind_str[0]);
 
-    // Check optional indices (0 means no index)
+    // Check optional indices (0 means no index).
     indices[1] = (ind_str[1].empty()) ? 0 : stoi(ind_str[1]);
     indices[2] = (ind_str[2].empty()) ? 0 : stoi(ind_str[2]);
 

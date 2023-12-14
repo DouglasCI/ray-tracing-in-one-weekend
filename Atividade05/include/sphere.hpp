@@ -9,9 +9,10 @@ class sphere : public hittable {
         /// @brief Constructor.
         /// @param center Sphere's center coordinates.
         /// @param radius Sphere's radius.
-        sphere(const point3& center, double radius): center(center), radius(radius) {}
+        sphere(const point3& _center, double _radius): 
+            center(_center), radius(_radius) {}
 
-        /// @brief Abstract method for deciding a hit.
+        /// @brief Method for deciding a hit.
         /// @param r Ray.
         /// @param ray_t Valid ray interval.
         /// @param rec Hit record.
@@ -26,11 +27,11 @@ class sphere : public hittable {
             if(discriminant < 0) return false;
             auto sqrtd = sqrt(discriminant);
 
-            // Find the nearest root that lies in the acceptable range.
+            // This guarantees sense of depth between multiple objects.
             auto root = (-half_b - sqrtd) / a;
             if(!ray_t.surrounds(root)) {
                 root = (-half_b + sqrtd) / a;
-                if (!ray_t.surrounds(root))
+                if(!ray_t.surrounds(root))
                     return false;
             }
 

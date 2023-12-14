@@ -8,7 +8,6 @@
 #include <array>
 #include <iomanip>
 
-#include "hittable.hpp"
 #include "triangle.hpp"
 #include "vec2.hpp"
 
@@ -47,12 +46,12 @@ class obj {
         /// @return String formatted for obj files.
         string get_face_elements_string();
 
-        /// @brief Get face elements as a list of triangle objects.
+        /// @brief Get face elements as a list of triangle class' objects.
         /// @return List of triangle objects.
         vector<triangle> get_triangle_faces();
 
     private:
-        /// @brief Parse indices separated by '/' character and convert to int.
+        /// @brief Parse indices separated by the '/' character and convert to int.
         /// @param ind_list String of indices.
         /// @return Array of indices converted to int.
         array<int, 3> parse_face_ind(string ind_list);

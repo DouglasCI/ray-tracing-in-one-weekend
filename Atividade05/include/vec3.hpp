@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <iostream>
+#include "commons.hpp"
 
 using namespace std;
 using std::sqrt;
@@ -74,6 +75,20 @@ class vec3 {
         /// @brief Get sum of squared components of this vector.
         /// @return Value of sum of squared components.
         double length_squared() const;
+
+        /// @brief Generate a random vector.
+        /// @return Random vector.
+        static vec3 random() {
+            return vec3(random_double(), random_double(), random_double());
+        }
+
+        /// @brief Generate a random vector in a interval.
+        /// @param min Minimum value.
+        /// @param max Maximum value.
+        /// @return Random vector.
+        static vec3 random(double min, double max) {
+            return vec3(random_double(min,max), random_double(min,max), random_double(min,max));
+        }
 };
 
 // Alias
@@ -86,7 +101,7 @@ using point3 = vec3;
 /// @param v Vector.
 /// @return Output stream.
 inline std::ostream& operator<<(std::ostream &out, const vec3 &v) {
-    return out << v[0] << ' ' << v[1] << ' ' << v[2] << '\n';
+    return out << v[0] << ' ' << v[1] << ' ' << v[2];
 }
 
 /// @brief Operator for vector addition.
@@ -168,6 +183,35 @@ inline vec3 cross(const vec3 &u, const vec3 &v) {
 /// @return Unit vector.
 inline vec3 unit_vector(vec3 v) {
     return v / v.length();
+}
+
+/// @brief Generate a random vector inside of the unit sphere.
+/// @return Random vector.
+inline vec3 random_in_unit_sphere() {
+    // Keep trying until we find a vector inside the unit sphere
+    while(true) {
+        auto p = vec3::random(-1,1);
+        if(p.length_squared() < 1)
+            return p;
+    }
+}
+
+/// @brief Generate a random vector normalized to be ON the unit sphere.
+/// @return Random vector.
+inline vec3 random_unit_vector() {
+    return unit_vector(random_in_unit_sphere());
+}
+
+/// @brief Generate random vector ON the unit sphere and in the correct hemisphere.
+/// @param normal Surface's normal.
+/// @return Random vector.
+inline vec3 random_on_hemisphere(const vec3& normal) {
+    vec3 on_unit_sphere = random_unit_vector();
+    // In the same hemisphere as the normal
+    if(dot(on_unit_sphere, normal) > 0.0) 
+        return on_unit_sphere;
+    else
+        return -on_unit_sphere;
 }
 
 #endif

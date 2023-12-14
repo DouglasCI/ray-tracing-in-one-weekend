@@ -7,7 +7,7 @@ class interval {
     double min, max;
 
     /// @brief Default constructor.
-    interval() : min(+infinity), max(-infinity) {} // Default interval is empty
+    interval() : min(+infinity), max(-infinity) {}
 
     /// @brief Constructor with set minimum and maximum.
     /// @param _min Minimum value.
