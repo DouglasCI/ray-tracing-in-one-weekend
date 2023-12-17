@@ -103,7 +103,7 @@ Nessa atividade, foram implementados os materiais metálicos e dielétricos (vid
 
 > ### ***Metal***
 > - Foi criada uma classe abstrata para materiais em geral chamada **material**. Agora, a classe **hit_record** e as classes herdadas de **hittable** armazenam uma instância da classe material, ou seja, elas sabem qual o material decidido para o objeto.
-> - Cada tipo de material é herdado a partir da classe **material**. O material de classe **lambertian** é o material difuso, implementado na [atividade 05](#atividade-05-materiais-difusos).
+> - Cada tipo de material é herdado a partir da classe **material**. O material de classe **lambertian** é o material difuso, implementado na [atividade 05](#--atividade-05-materiais-difusos).
 > - O material de classe **metal** é o metálico, responsável por refletir os raios de maneira organizada. Essa reflexão segue uma fórmula que foi implementada pelo método **reflect** na classe **vec3**.
 > - Note que o método **ray_color** que decide as cores dos pixels atingidos pelos raios, foi generalizado para aceitar os métodos sobrescritos dos diferentes materiais.
 > - Também foi adicionado um parâmetro ("*fuzziness*") para alterar o nível de difusão da reflexão do material metálico.
