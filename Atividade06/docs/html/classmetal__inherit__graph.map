@@ -1,0 +1,4 @@
+<map id="metal" name="metal">
+<area shape="rect" id="node1" title="Class for a metalic material." alt="" coords="14,80,74,107"/>
+<area shape="rect" id="node2" href="$classmaterial.html" title="Class for a generic material." alt="" coords="5,5,83,32"/>
+</map>

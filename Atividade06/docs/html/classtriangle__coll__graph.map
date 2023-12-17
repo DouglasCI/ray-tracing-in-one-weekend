@@ -1,0 +1,6 @@
+<map id="triangle" name="triangle">
+<area shape="rect" id="node1" title="Hittable derived class for a hittable triangle." alt="" coords="39,228,111,255"/>
+<area shape="rect" id="node2" href="$classhittable.html" title="Base class for hittable objects." alt="" coords="5,109,77,136"/>
+<area shape="rect" id="node3" href="$classvertex.html" title="Class for a vertex." alt="" coords="101,109,165,136"/>
+<area shape="rect" id="node4" href="$classvec3.html" title="Class for 3D vectors." alt="" coords="107,5,160,32"/>
+</map>

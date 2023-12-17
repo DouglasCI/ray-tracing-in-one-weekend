@@ -97,3 +97,20 @@ Nesta Atividade, foi implemetada a representação de normais na superfície dos
 
 > ### ***Execução do programa e saídas***
 > A compilação e a execução do programa seguem exatamente como na [atividade 01](#instruções-de-compilação), as imagens geradas estão no diretório *images* e os objetos de entrada estão no diretório *input*. Veja a documentação e o código fonte para mais detalhes sobre as implementações.
+
+## - **Atividade 06 (Metal e Vidro)**
+Nessa atividade, foram implementados os materiais metálicos e dielétricos (vidros).
+
+> ### ***Metal***
+> - Foi criada uma classe abstrata para materiais em geral chamada **material**. Agora, a classe **hit_record** e as classes herdadas de **hittable** armazenam uma instância da classe material, ou seja, elas sabem qual o material decidido para o objeto.
+> - Cada tipo de material é herdado a partir da classe **material**. O material de classe **lambertian** é o material difuso, implementado na [atividade 05](#atividade-05-materiais-difusos).
+> - O material de classe **metal** é o metálico, responsável por refletir os raios de maneira organizada. Essa reflexão segue uma fórmula que foi implementada pelo método **reflect** na classe **vec3**.
+> - Note que o método **ray_color** que decide as cores dos pixels atingidos pelos raios, foi generalizado para aceitar os métodos sobrescritos dos diferentes materiais.
+> - Também foi adicionado um parâmetro ("*fuzziness*") para alterar o nível de difusão da reflexão do material metálico.
+
+> ### ***Vidro***
+> - Adicionalmente, foi criada a classe **dielectric** para materiais dielétricos (vidros). Ela é baseada na Lei de Snell e simula tanto situações de refração como de reflexão (quando o raio não consegue ser refratado).
+> - Para simular um vidro mais realisticamente, foi utilizada a aproximação de Schlick, pois o nível de reflexão do vidro varia de acordo com o ângulo da visão.
+
+> ### ***Execução do programa e saídas***
+> A compilação e a execução do programa seguem exatamente como na [atividade 01](#instruções-de-compilação), as imagens geradas estão no diretório *images* e os objetos de entrada estão no diretório *input*. Veja a documentação e o código fonte para mais detalhes sobre as implementações.
