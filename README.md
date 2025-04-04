@@ -1,5 +1,5 @@
 # **[Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)**
-#### O tutorial [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) de [petershirley](https://github.com/petershirley), [trevordblack](https://github.com/trevordblack) e [hollasch](https://github.com/hollasch), foi feito em partes divididas em **Atividades**.
+#### O tutorial [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) de [petershirley](https://github.com/petershirley), [trevordblack](https://github.com/trevordblack) e [hollasch](https://github.com/hollasch) ensina como fazer seu próprio Ray Tracing do zero em C++ de forma didática e prática. O código feito foi dividido em **6 atividades**.
 > ### ***Instruções de compilação***
 > 1. Dentro do diretório do projeto *AtividadeXX*, crie um novo diretório chamado *build*;
 > 2. No interior do diretório *build* abra um terminal e insira os comandos abaixo;
