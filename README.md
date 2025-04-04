@@ -1,5 +1,5 @@
-# **Computação Gráfica**
-#### As atividades foram feitas em um ambiente Linux, na linguagem C++ e na IDE Visual Studio Code.
+# **[Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)**
+#### O tutorial [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) de [petershirley](https://github.com/petershirley), [trevordblack](https://github.com/trevordblack) e [hollasch](https://github.com/hollasch), foi feito em partes divididas em **Atividades**.
 > ### ***Instruções de compilação***
 > 1. Dentro do diretório do projeto *AtividadeXX*, crie um novo diretório chamado *build*;
 > 2. No interior do diretório *build* abra um terminal e insira os comandos abaixo;
@@ -15,7 +15,7 @@
 >    ```
 
 > ### ***Documentação***
-> A documentação completa e detalhada do código está no arquivo ***Documentation.html*** dentro do diretório de sua respectiva atividade.
+> A documentação do código foi gerada utilizando [doxygen](https://www.doxygen.nl/) e está no arquivo ***Documentation.html*** dentro do diretório de cada atividade.
 
 ## - **Atividade 01 (I/O de Imagens)**
 Aqui, foram feitas operações para **configurar o ambiente** que será utilizado para toda a disciplina, assim como a implementação do código para a **geração de imagens**. O código pertinente a esta atividade está no arquivo ***Generator.h*** e as chamadas das funções está em ***main.cpp***.
